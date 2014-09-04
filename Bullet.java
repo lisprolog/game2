@@ -54,16 +54,11 @@ public class Bullet{
 		y = e.getY();
 	}
 
-        public void actual(Player p, Enemy e, Field f){
+        public void actual(Field f){
 
-		if(forward && x == f.getWidth()-1)
+		if(x == f.getWidth()-1)
 			visible = false;
-//		}if(forward == false && getX() == 0)
-//			visible = false;
-//			reset(e, f);
-		else if(forward && visible)
+		else if(visible)
                 	x++;
-		else if (forward == false && visible)
-			x--;
 	}			
 }

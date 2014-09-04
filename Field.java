@@ -3,9 +3,18 @@ public class Field{
         static int width;
         static int height;
         static char[][] field;
+	static	Player p;
+	static	Enemy e1;
+	static	Enemy e2;
+	static Bullet b1;
 
+	static int enemies = 2;
 
-	public Field(){
+	public Field(Player p1, Enemy en1, Enemy en2, Bullet b){
+		this.p = p1;
+		this.e1 = en1;
+		this.e2 = en2;
+		this.b1 = b;
 		width = 20;
 		height = 10;
 		field = new char[height][width];	
@@ -15,11 +24,15 @@ public class Field{
 		return field[y][x];
 	}
 
-	public static void setPixel(int x, int y, char c, Enemy e){
-		if(getPixel(x,y) == e.getC()){
+	public static void setPixel(int x, int y, char c){
+		if(getPixel(x,y) == e1.getC()){
 			field[y][x]= '+';
-			Game2.win = true;
-			Game2.end = true;
+			e1.setVisible(false);
+			enemies--;
+		}else if(getPixel(x,y) == e2.getC()){
+			field[y][x]= '+';
+			e2.setVisible(false);
+			enemies--; 
 		}else		
 			field[y][x] = c;
 	}
@@ -38,6 +51,7 @@ public class Field{
                 for(int h = 0; h< height; h++){
                         for(int w = 0; w< width; w++ ){
                                 result += field[h][w];
+				result += ' ';
                         }
                         result += '\n';
                 }
@@ -53,16 +67,19 @@ public class Field{
                 }
         }
 
-        public void setPlayer(Player p, Enemy e){
-		setPixel(p.getX(), p.getY(), p.getC(), e);
+        public void setPlayer(Player p){
+		setPixel(p.getX(), p.getY(), p.getC());
         }
 
         public void setEnemy(Enemy e){
-		setPixel(e.getX(), e.getY(), e.getC(), e);
-
+		setPixel(e.getX(), e.getY(), e.getC());
         }
 
-	public void setBullet(Bullet b, Enemy e){
-		setPixel(b.getX(), b.getY(), b.getC(), e);
+	public void setBullet(Bullet b){
+		setPixel(b.getX(), b.getY(), b.getC());
+	}
+
+	public int getEnemies(){
+		return enemies;
 	}
 }

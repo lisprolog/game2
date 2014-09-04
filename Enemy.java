@@ -4,6 +4,7 @@ public class Enemy{
 	int y;
 	char c;
 	boolean down = true;
+	boolean visible = true;
 	Field f1;
 
 	public Enemy(int x, int y, char c){
@@ -36,6 +37,14 @@ public class Enemy{
 		return down;
 	}
 
+	public void setVisible(boolean t){
+		this.visible = t;
+	}
+
+	public boolean getVisible(){
+		return visible;
+	}
+
 	public void fire(){
 		Bullet b2 = new Bullet(getY(),8,'~');
 	}
@@ -55,4 +64,10 @@ public class Enemy{
 		else
 			y--;
 	}
+
+        public void actual(Bullet b, Enemy e, Field f){
+
+		if(b.getX() == f.getWidth()-1 && e.getY() == b.getY())
+                        this.visible = false;
+       } 
 }
