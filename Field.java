@@ -3,18 +3,29 @@ public class Field{
         static int width;
         static int height;
         static char[][] field;
-	static	Player p;
-	static	Enemy e1;
-	static	Enemy e2;
+	static Player p1;
+	static Enemy e1;
+	static Enemy e2;
 	static Bullet b1;
+	static Rocket r1;
 
 	static int enemies = 2;
 
-	public Field(Player p1, Enemy en1, Enemy en2, Bullet b){
-		this.p = p1;
+	public Field(Player p, Enemy en1, Enemy en2, Bullet b){
+		this.p1 = p;
 		this.e1 = en1;
 		this.e2 = en2;
 		this.b1 = b;
+		width = 20;
+		height = 10;
+		field = new char[height][width];	
+	}
+
+	public Field(Player p, Enemy en1, Enemy en2, Rocket r){
+		this.p1 = p;
+		this.e1 = en1;
+		this.e2 = en2;
+		this.r1 = r;
 		width = 20;
 		height = 10;
 		field = new char[height][width];	
@@ -77,6 +88,10 @@ public class Field{
 
 	public void setBullet(Bullet b){
 		setPixel(b.getX(), b.getY(), b.getC());
+	}
+
+	public void setRocket(Rocket r){
+		setPixel(r.getX(), r.getY(), r.getC());
 	}
 
 	public int getEnemies(){

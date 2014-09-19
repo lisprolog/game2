@@ -1,11 +1,12 @@
-public class Bullet{ 
+public class Rocket{
+
 	int x;
 	int y;
 	char c;
 	boolean visible = false;
 	boolean forward = true;
 
-	public Bullet(int x, int y, char c){
+	public Rocket(int x, int y, char c){
 		this.x = x;
 		this.y = y;
 		this.c = c;
@@ -48,7 +49,6 @@ public class Bullet{
 		y = 3;
 	}
 
-
 	public void reset(Player p){
 		x = 1;
 		y = p.getY();
@@ -63,9 +63,9 @@ public class Bullet{
 
 		if(x == f.getWidth()-1){
 			reset();
-			visible = false;			
+			visible = false;
 		}else if(visible){
-                	x++;
+                	x += 2;
 		}
 	}			
 }

@@ -32,13 +32,27 @@ public class Player{
                 this.y = y;
         }
 
+	public void up(){
+		if(y == 0)
+			y = 0;
+		else
+			y--;
+	}
+
+	public void down( Field f){
+		if (y == f.getHeight()-1)
+			y = f.getHeight()-1;
+		else
+			y++;
+	}
+
 	public boolean getDown(){
 		return down;
 	}
 
-	public void fire(){
-		Bullet b1 = new Bullet(getY(),1,'-');
-	}
+//	public void fire(){
+//		Bullet b1 = new Bullet(getY(),1,'-');
+//	}
 
 	public void actual(Field f){
 
