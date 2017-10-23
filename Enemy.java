@@ -1,10 +1,14 @@
+/**
+	Enemy moves on the right side of the screen (up or down) one step at a time.
+	 
+*/
 public class Enemy{
 
-	int x;
-	int y;
-	char c;
-	boolean down = true;
-	boolean visible = true;
+	private int x;
+	private int y;
+	private char c;
+	private boolean down = true;
+	private boolean visible = true;
 	Field f1;
 
 	public Enemy(int x, int y, char c){
@@ -53,21 +57,24 @@ public class Enemy{
 
 		this.f1 = f;
 
-		if( down && getY() == f.getHeight()-1)
+		if( down && getY() == f.getHeight()-1){
 			down = false;
-		if( down == false && getY() == 0)
+		}
+		if( down == false && getY() == 0){
 			down = true;
-
+		}
 		
-		if(down)
+		if(down){
 			y++;
-		else
+		}else{
 			y--;
+		}
 	}
 
         public void actual(Bullet b, Enemy e, Field f){
 
-		if(b.getX() == f.getWidth()-1 && e.getY() == b.getY())
+		if(b.getX() == f.getWidth()-1 && e.getY() == b.getY()){
                         this.visible = false;
+		}
        } 
 }
