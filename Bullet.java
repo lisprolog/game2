@@ -63,7 +63,7 @@ public class Bullet{
 	}
 	
 	/* 
-	   checks if the bullet position on screen
+	   checks the bullet position on screen
 	   if the bullet reaches the end of screen, reset the bullet
 	   else the position gets incremented by one position
 	*/
