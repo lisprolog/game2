@@ -1,9 +1,18 @@
+/**
+	ASCII-bullet "-" moves from the left side(player) of the screen to the right side(enemy).
+	To pull the trigger, the player hits the "f" button on the keyboard and sets boolean "visible" to "true".
+	Once the bullet is fired, in each cicle, the bullet moves one pixel at a time.
+	If the "-" reaches the enemy side and overlaps with the enemy at the same time,
+	the enemy is hit and the game is won.
+*/
+
 public class Bullet{ 
-	int x;
-	int y;
-	char c;
-	boolean visible = false;
-	boolean forward = true;
+
+	private int x;
+	private int y;
+	private char c;
+	private boolean visible = false;
+	private boolean forward = true;
 
 	public Bullet(int x, int y, char c){
 		this.x = x;
@@ -24,7 +33,7 @@ public class Bullet{
 	}
 
 	public boolean getVisible(){
-		return visible;
+		return this.visible;
 	}
 
         public void setX(int x){
@@ -48,17 +57,16 @@ public class Bullet{
 		y = 3;
 	}
 
-
 	public void reset(Player p){
 		x = 1;
 		y = p.getY();
 	}
-
-//	public void reset(Enemy e, Field f){
-//		x = f.getWidth()-1;
-//		y = e.getY();
-//	}
-
+	
+	/* 
+	   checks if the bullet position on screen
+	   if the bullet reaches the end of screen, reset the bullet
+	   else the position gets incremented by one position
+	*/
         public void actual(Field f){
 
 		if(x == f.getWidth()-1){
